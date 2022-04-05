@@ -30,7 +30,7 @@ class CellObj {
 }
 
 $(".runbtn").click(function () {
-    $("#waitbox").fadeIn();
+
     // console.log("RUNRUNRUN");
     var gps = $("[name='gp']");
     var gpcho = "";
@@ -67,32 +67,37 @@ $(".runbtn").click(function () {
         // console.log("使用默认文件名");
     }
 
-    $.ajax({
-        url: "sr",
-        method: "POST",
-        data: {
-            dirname: dirname,
-            model_cho: $("[name='model_cho']").val(),
-            gp_cho: gpcho,
-            set_cho: setcho
-        },
-        success: function (data) {
-            console.log(data);
-            var rescode = data['code'];
-            if (rescode === 100) {
-                alert("文件夹名重复");
-            } else if (rescode === 1) {
-                new CellObj($("#content"), data['dirname'], data["model"], data['graphs'], data['c_time']);
-                $(".cellobj").hide();
-                $("#cellobj" + data['dirname']).show();
-            }
+    var r = confirm("确认执行模拟");
 
-            $("#waitbox").fadeOut();
-        },
-        error: function () {
-            alert("发生错误，请联系维护人员。")
-        }
-    })
+    if (r) {
+        $("#waitbox").fadeIn();
+        $.ajax({
+            url: "sr",
+            method: "POST",
+            data: {
+                dirname: dirname,
+                model_cho: $("[name='model_cho']").val(),
+                gp_cho: gpcho,
+                set_cho: setcho
+            },
+            success: function (data) {
+                console.log(data);
+                var rescode = data['code'];
+                if (rescode === 100) {
+                    alert("文件夹名重复");
+                } else if (rescode === 1) {
+                    new CellObj($("#content"), data['dirname'], data["model"], data['graphs'], data['c_time']);
+                    $(".cellobj").hide();
+                    $("#cellobj" + data['dirname']).show();
+                }
+
+                $("#waitbox").fadeOut();
+            },
+            error: function () {
+                alert("发生错误，请联系维护人员。")
+            }
+        })
+    }
 });
 
 function set_content_shape() {
