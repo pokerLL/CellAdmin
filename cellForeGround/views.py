@@ -50,7 +50,10 @@ def run_ajax(request):
 
 
 def run_cell_obj(model):
-    os.system(abpth + r"/cell.exe {}".format(model.model_cho))
+    if os.name == 'nt':
+        os.system(abpth + r"/cell.exe {}".format(model.model_cho))
+    elif os.name == 'posix':
+        os.system(abpth + r"/cell {}".format(model.model_cho))
     move_data_to(abpth, abpth + r"/cell_data/" + model.dirname)
 
 
