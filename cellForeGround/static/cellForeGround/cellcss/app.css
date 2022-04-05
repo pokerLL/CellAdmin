@@ -1,0 +1,68 @@
+#waitbox{
+    display: None;
+}
+
+#popbox {
+    display: None;
+    background-color: rgba(205, 205, 205, 0.5);
+}
+
+.mycontent {
+    position: absolute;
+    margin: 0;
+}
+
+#content {
+    width: 100%;
+    /*background-color: yellow;*/
+    overflow-y: auto;
+}
+
+.cellimg {
+    min-width: 300px;
+    width: 32%;
+    margin: 5px;
+}
+
+.vcenter {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading {
+    width: 3px; height:3px;
+    border-radius: 100%;                      /* 圆角 */
+    box-shadow: 0 -10px 0 1px #333,           /* 上, 1px 扩展 */
+                10px 0px #333,                /* 右 */
+                0 10px #333,                  /* 下 */
+                -10px 0 #333,                 /* 左 */
+
+                -7px -7px 0 .5px #333,        /* 左上, 0.5px扩展 */
+                7px -7px 0 1.5px #333,        /* 右上, 1.5px扩展 */
+                7px 7px #333,                 /* 右下 */
+                -7px 7px #333;                /* 左下 */
+}
+
+.spin {
+    animation: spin 1s steps(8) infinite;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+}
+
+.objitem{
+    border: solid 2px yellow;
+    margin-bottom: 5px;
+}
+
+.objitem > button {
+    float: right;
+}
+
+.cellobj h3{
+    text-align: center;
+}

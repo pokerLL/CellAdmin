@@ -1,0 +1,295 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cell-Admin</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/dist/css/googlefont.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/dist/css/ionicons.min.css' %}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="{% static 'cellForeGround/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/jqvmap/jqvmap.min.css' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/dist/css/adminlte.min.css' %}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/daterangepicker/daterangepicker.css' %}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{% static 'cellForeGround/plugins/summernote/summernote-bs4.min.css' %}">
+
+
+</head>
+<body class="sidebar-mini skin-green-light">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            {#            <li class="nav-item">#}
+            {#                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i#}
+            {#                        class="fas fa-bars"></i></a>#}
+            {#            </li>#}
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn" href="#" data-widget="control-sidebar" role="button">
+                    管理当前运行实例
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn" href="#" role="button">
+                    平铺
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn" href="#" role="button">
+                    对比
+                </a>
+            </li>
+
+            <!-- Full Screen -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+            <img src="{% static 'cellForeGround/dist/img/AdminLTELogo.png' %}"
+                 class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">CELL-ADMIN</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <form id="run-form">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">模式选择</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <select class="custom-select" name="model_cho">
+                                        <option value="1">ccl_fe</option>
+                                        <option value="2">mccl_fe</option>
+                                        <option value="3">ccl_tal</option>
+                                        <option value="4">mccl_tal</option>
+                                        <option value="5">ccl_uni</option>
+                                        <option value="6">mccl_uni</option>
+                                        <option value="7">ccl_hos</option>
+                                        <option value="8">mccl_hos</option>
+                                        <option value="9">dt_fe</option>
+                                        <option value="10">dt_tal</option>
+                                        <option value="11">dt_uni</option>
+                                        <option value="12">dt_hos</option>
+                                        <option value="13">ccl_hoos</option>
+                                        <option value="14">mccl_hoos</option>
+                                        <option value="15">dt_rk4</option>
+                                        <option value="16">dt_hoos</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">图表选择</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp1"
+                                               id="gp1" name="gp">
+                                        <label class="custom-control-label" for="gp1">V-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp2"
+                                               id="gp2" name="gp">
+                                        <label class="custom-control-label" for="gp2">I-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp3"
+                                               id="gp3" name="gp">
+                                        <label class="custom-control-label" for="gp3">O_p1-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp4"
+                                               id="gp4" name="gp">
+                                        <label class="custom-control-label" for="gp4">P_IM-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp5"
+                                               id="gp5" name="gp">
+                                        <label class="custom-control-label" for="gp5">P_IC-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp6"
+                                               id="gp6" name="gp">
+                                        <label class="custom-control-label" for="gp6">P_C-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp7"
+                                               id="gp7" name="gp">
+                                        <label class="custom-control-label" for="gp7">I_F-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp8"
+                                               id="gp8" name="gp">
+                                        <label class="custom-control-label" for="gp8">P0-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp9"
+                                               id="gp9" name="gp">
+                                        <label class="custom-control-label" for="gp9">Q0-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp10"
+                                               id="gp10" name="gp">
+                                        <label class="custom-control-label" for="gp10">R0-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp11"
+                                               id="gp11" name="gp">
+                                        <label class="custom-control-label" for="gp11">S0-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp12"
+                                               id="gp12" name="gp">
+                                        <label class="custom-control-label" for="gp12">T0-t图</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp13"
+                                               id="gp13" name="gp">
+                                        <label class="custom-control-label" for="gp13">V0-t图</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox col-md-6">
+                                        <input class="custom-control-input" type="checkbox" value="gp14"
+                                               id="gp14" name="gp">
+                                        <label class="custom-control-label" for="gp14">W0-t图</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        设置
+                    </div>
+                    <div class="card-body">
+                        <div class="custom-control custom-switch col-md-12">
+                            <input type="checkbox" class="custom-control-input" id="defaultdirname" name="set">
+                            <label class="custom-control-label" for="defaultdirname">自定义文件夹名</label>
+                        </div>
+                        <div class="custom-control custom-switch col-md-12">
+                            <input type="checkbox" class="custom-control-input" id="set1" name="set" checked="">
+                            <label class="custom-control-label" for="set1">自动保存全部图片</label>
+                        </div>
+                        <div class="custom-control custom-switch col-md-12">
+                            <input type="checkbox" class="custom-control-input" id="set2" name="set">
+                            <label class="custom-control-label" for="set2">对比模式</label>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <div style="position: absolute;bottom: 5px;width:90%;">
+                <div class="row">
+                    <button type="button" class="btn btn-block btn-info runbtn">运行实例</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class=" control-sidebar control-sidebar-dark
+                ">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>当前实例</h5>
+            <p>
+                实例数量：8
+                </br>
+                网络时间：2021-11-27 09:52:12
+            </p>
+
+
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Contact Us</strong>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'cellForeGround/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'cellForeGround/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'cellForeGround/dist/js/adminlte.min.js' %}"></script>
+<script src="{% static "cellForeGround/celljs/app.js" %}"></script>
+</body>
+</html>
