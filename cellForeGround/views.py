@@ -84,12 +84,16 @@ def generate_graphs(model):
 
 
 def generate_graph(data, gpid, path):
-    # print(path)
+    print(gpid)
     col_list = [3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21]
     name_list = ["V-t图", "I-t图", "O_p1-t图", "P_IM-t图", "P_IC-t图", "P_C-t图", "I_F-t图", "P0-t图", "Q0-t图", "R0-t图",
                  "S0-t图", "T0-t图", "V0-t图", "W0-t图"]
     plt.plot(data[0], data[col_list[gpid]] - 1)
     plt.title(name_list[gpid][:-1])
+    if gpid == 0:
+        plt.xlim(0, 300)
+    elif 7 <= gpid <= 13:
+        plt.xlim(0, 350)
     picname = path + "/pic/" + name_list[gpid][:-1] + ".png"
     plt.savefig(picname)
     plt.close()
